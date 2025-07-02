@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.greetingcard.article.ArticlePicture
 import com.example.greetingcard.article.ArticleText
 import com.example.greetingcard.ui.theme.GreetingCardTheme
 import com.example.greetingcard.ui.theme.HappyBirthDayTheme
@@ -54,7 +55,6 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                     ) {
                         BirthdayCardPreview()
-
                     }
                 }
 
@@ -99,6 +99,7 @@ fun BirthdayCardPreview() {
 //    BirthdayCardPicture("Faisal", "May all your wishes come true")
     Column(modifier = Modifier.fillMaxSize()) {
 
-        ArticleText(modifier = Modifier.padding(14.dp))
+        ArticlePicture(modifier = Modifier.fillMaxWidth())
+        ArticleText(modifier = Modifier.padding(24.dp))
     }
 }

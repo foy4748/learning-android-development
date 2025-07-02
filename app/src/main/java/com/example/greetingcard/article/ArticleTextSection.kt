@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -12,11 +13,12 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ArticleText(modifier: Modifier = Modifier) {
 
-    Column(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = modifier) {
+    Column(verticalArrangement = Arrangement.spacedBy(18.dp), modifier = modifier) {
         // Title
         Text(
             text = "Jetpack Compose tutorial",
-            fontSize = 24.sp
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold
         )
         // Paragraph 1
         Text(
