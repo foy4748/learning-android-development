@@ -30,6 +30,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.greetingcard.article.ArticlePicture
 import com.example.greetingcard.article.ArticleText
+import com.example.greetingcard.task.TaskPicture
+import com.example.greetingcard.task.TaskText
 import com.example.greetingcard.ui.theme.GreetingCardTheme
 import com.example.greetingcard.ui.theme.HappyBirthDayTheme
 
@@ -97,9 +99,30 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun BirthdayCardPreview() {
 //    BirthdayCardPicture("Faisal", "May all your wishes come true")
+//    TaskCheckerTask()
+    ArticleTask()
+}
+
+@Composable
+fun ArticleTask(){
+
     Column(modifier = Modifier.fillMaxSize()) {
 
         ArticlePicture(modifier = Modifier.fillMaxWidth())
         ArticleText(modifier = Modifier.padding(24.dp))
+    }
+
+}
+
+@Composable
+fun TaskCheckerTask(){
+
+    Column(
+        verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        TaskPicture(modifier = Modifier.fillMaxWidth())
+        TaskText()
     }
 }
