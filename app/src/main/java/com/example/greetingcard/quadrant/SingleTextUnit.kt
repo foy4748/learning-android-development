@@ -17,24 +17,20 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SingleTextUnit(title: String, text: String, modifier: Modifier = Modifier) {
-    val padding = 15.dp
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
         modifier = modifier
     ) {
         Text(
             text = title,
-            fontSize = 18.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.wrapContentSize(Alignment.Center)
         )
         Text(
             text = text,
-            fontSize = 14.sp,
             textAlign = TextAlign.Justify,
-            modifier = Modifier.padding(padding)
         )
     }
 }

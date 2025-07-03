@@ -4,10 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun Quadrant() {
@@ -15,7 +17,7 @@ fun Quadrant() {
     val weight = 1f
 
     // Layout
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().padding()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -29,6 +31,7 @@ fun Quadrant() {
                     .fillMaxSize()
                     .weight(weight)
                     .background(Color(0xFFEADDFF))
+                    .padding(16.dp)
             )
             SingleTextUnit(
                 title = "Image composable",
@@ -37,6 +40,7 @@ fun Quadrant() {
                     .fillMaxSize()
                     .weight(weight)
                     .background(Color(0xFFD0BCFF))
+                    .padding(16.dp)
             )
 
         }
@@ -53,6 +57,7 @@ fun Quadrant() {
                     .fillMaxSize()
                     .weight(weight)
                     .background(Color(0xFFB69DF8))
+                    .padding(16.dp)
             )
             SingleTextUnit(
                 title = "Column composable",
@@ -61,6 +66,7 @@ fun Quadrant() {
                     .fillMaxSize()
                     .weight(weight)
                     .background(Color(0xFFF6EDFF))
+                    .padding(16.dp)
             )
 
         }
