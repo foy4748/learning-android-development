@@ -12,6 +12,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.greetingcard.article.ArticlePicture
 import com.example.greetingcard.article.ArticleText
+import com.example.greetingcard.quadrant.SingleTextUnit
 import com.example.greetingcard.task.TaskPicture
 import com.example.greetingcard.task.TaskText
 import com.example.greetingcard.ui.theme.GreetingCardTheme
@@ -100,11 +102,71 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun BirthdayCardPreview() {
 //    BirthdayCardPicture("Faisal", "May all your wishes come true")
 //    TaskCheckerTask()
-    ArticleTask()
+//    ArticleTask()
+    // Quadrant
+    Quadrant()
 }
 
 @Composable
-fun ArticleTask(){
+fun Quadrant() {
+
+    val weight = 1f
+
+    // Layout
+    Column(modifier = Modifier.fillMaxSize()) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(weight)
+        ) {
+            SingleTextUnit(
+                title = "Text composable",
+                text = "Displays text and follows the recommended Material Design guidelines.",
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(weight)
+                    .background(Color(0xFFEADDFF))
+            )
+            SingleTextUnit(
+                title = "Image composable",
+                text = "Creates a composable that lays out and draws a given Painter class object.",
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(weight)
+                    .background(Color(0xFFD0BCFF))
+            )
+
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(weight)
+        ) {
+            SingleTextUnit(
+                title = "Row composable",
+                text = "A layout composable that places its children in a horizontal sequence.",
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(weight)
+                    .background(Color(0xFFB69DF8))
+            )
+            SingleTextUnit(
+                title = "Column composable",
+                text = "A layout composable that places its children in a vertical sequence.",
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(weight)
+                    .background(Color(0xFFF6EDFF))
+            )
+
+        }
+    }
+}
+
+@Composable
+fun ArticleTask() {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
@@ -115,7 +177,7 @@ fun ArticleTask(){
 }
 
 @Composable
-fun TaskCheckerTask(){
+fun TaskCheckerTask() {
 
     Column(
         verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically),
