@@ -3,6 +3,7 @@ package com.example.greetingcard.quadrant
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,7 +20,7 @@ fun SingleTextUnit(title: String, text: String, modifier: Modifier = Modifier) {
     val padding = 15.dp
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically),
+        verticalArrangement = Arrangement.Center,
         modifier = modifier
     ) {
         Text(
@@ -27,7 +28,7 @@ fun SingleTextUnit(title: String, text: String, modifier: Modifier = Modifier) {
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(padding)
+            modifier = Modifier.wrapContentSize(Alignment.Center)
         )
         Text(
             text = text,
