@@ -24,8 +24,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.greetingcard.article.ArticlePicture
+import com.example.greetingcard.article.ArticleTask
 import com.example.greetingcard.article.ArticleText
+import com.example.greetingcard.birthdaycard.BirthdayCardRender
+import com.example.greetingcard.businesscard.BusinessCardRender
 import com.example.greetingcard.quadrant.Quadrant
+import com.example.greetingcard.task.TaskCheckerTask
 import com.example.greetingcard.task.TaskPicture
 import com.example.greetingcard.task.TaskText
 import com.example.greetingcard.ui.theme.GreetingCardTheme
@@ -94,33 +98,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
-//    BirthdayCardPicture("Faisal", "May all your wishes come true")
+//    BirthdayCardRender("Faisal", "Wish You all the best")
 //    TaskCheckerTask()
 //    ArticleTask()
-    Quadrant()
+//    Quadrant()
+    BusinessCardRender()
 }
 
 
-@Composable
-fun ArticleTask() {
-
-    Column(modifier = Modifier.fillMaxSize()) {
-
-        ArticlePicture(modifier = Modifier.fillMaxWidth())
-        ArticleText(modifier = Modifier.padding(24.dp))
-    }
-
-}
-
-@Composable
-fun TaskCheckerTask() {
-
-    Column(
-        verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        TaskPicture(modifier = Modifier.fillMaxWidth())
-        TaskText()
-    }
-}
