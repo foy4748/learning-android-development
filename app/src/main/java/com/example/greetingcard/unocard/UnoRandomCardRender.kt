@@ -6,10 +6,18 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -26,7 +34,9 @@ import androidx.compose.ui.unit.sp
 @Preview(showBackground = true)
 @Composable
 fun UnoRandomCardRender() {
-    val (cardColor, cardSymbol) = UnoCard.getRandomCard()
+    val (_cardColor, _cardSymbol) = UnoCard.getRandomCard()
+    var cardColor by remember { mutableStateOf(_cardColor) }
+    var cardSymbol by remember { mutableStateOf(_cardSymbol) }
     val padding : Dp = 30.dp
     val fontSize : TextUnit = 100.sp
 
@@ -90,7 +100,7 @@ fun UnoRandomCardRender() {
                     modifier = Modifier
 //                    .size(200.dp)
                         .fillMaxSize()
-                        .rotate(15f) // Rotate the oval diagonally
+                        .rotate(30f) // Rotate the oval diagonally
                 ) {
                     drawOval(
                         color = Color.White, // Change to your desired color
@@ -119,6 +129,15 @@ fun UnoRandomCardRender() {
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(padding)
                 )
+                Spacer(Modifier.height(10.dp))
+                var fart = "fart"
+                Button(onClick = {
+                    val (newCardColor, newCardSymbol) = UnoCard.getRandomCard()
+                    cardColor = newCardColor
+                    cardSymbol = newCardSymbol
+                }) {
+                    Text(text="Shuffle")
+                }
 
             }
             // END Mid Text
