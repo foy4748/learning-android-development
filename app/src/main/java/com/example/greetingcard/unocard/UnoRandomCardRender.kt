@@ -135,8 +135,14 @@ fun UnoRandomCardRender() {
                     val (newCardColor, newCardSymbol) = UnoCard.getRandomCard()
                     cardColor = newCardColor
                     cardSymbol = newCardSymbol
-                }) {
-                    Text(text="Shuffle")
+                },
+                    colors = ButtonColors(
+                        containerColor = Color(0xFFFFFFFF),
+                        contentColor = Color(0x00000000),
+                        disabledContainerColor = Color(0xEEEEEEEE),
+                        disabledContentColor = Color(0x00000000),
+                    )) {
+                    Text(text="Shuffle", color = Color.Black)
                 }
 
             }
