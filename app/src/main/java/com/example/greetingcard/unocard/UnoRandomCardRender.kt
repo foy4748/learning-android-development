@@ -32,7 +32,12 @@ fun UnoRandomCardRender() {
 
     // Card Oval
     Box {
+
+        // Card Base
+        // Numbers at the corners
+        // and Background Color
         Column {
+            // Upper Part
             Row(
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.Top,
@@ -49,6 +54,7 @@ fun UnoRandomCardRender() {
                     modifier = Modifier.padding(padding)
                 )
             }
+            // Lower Part
             Row(
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.Bottom,
@@ -70,6 +76,7 @@ fun UnoRandomCardRender() {
 
         }
 
+        // Mid Section
         Box{
             // Oval
             Column(
@@ -83,13 +90,13 @@ fun UnoRandomCardRender() {
                     modifier = Modifier
 //                    .size(200.dp)
                         .fillMaxSize()
-                        .rotate(45f) // Rotate the oval diagonally
+                        .rotate(15f) // Rotate the oval diagonally
                 ) {
                     drawOval(
                         color = Color.White, // Change to your desired color
                         topLeft = Offset.Zero,
                         size = size,
-                        style = Stroke(width = 40.dp.toPx()) // Outline thickness
+                        style = Stroke(width = 30.dp.toPx()) // Outline thickness
                     )
                 }
             }
@@ -119,5 +126,4 @@ fun UnoRandomCardRender() {
 
     }
 
-    // Card Base
 }
