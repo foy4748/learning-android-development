@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,7 +37,7 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
 @Composable
 fun TipCalculatorRender() {
     var givenInput by remember { mutableStateOf("") }
-    var tipPercent by remember { mutableStateOf("15") }
+    var tipPercent by remember { mutableStateOf("") }
     val tipAmount =
         calculateTip(givenInput.toDoubleOrNull() ?: 0.0, tipPercent.toDoubleOrNull() ?: 0.0)
     val totalAmount = ((tipAmount.toDoubleOrNull() ?: 0.0) + (givenInput.toDoubleOrNull() ?: 0.0))
@@ -68,7 +69,10 @@ fun TipCalculatorRender() {
             onValueChange = { givenInput = it },
             label = "Bill Amount",
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next
+            ),
             modifier = Modifier
                 .fillMaxWidth()
         )
@@ -79,7 +83,10 @@ fun TipCalculatorRender() {
             onValueChange = { tipPercent = it },
             label = "Tip Percent %",
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            ),
             modifier = Modifier
                 .fillMaxWidth()
         )
