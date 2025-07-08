@@ -10,11 +10,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -34,11 +36,11 @@ import androidx.compose.ui.unit.sp
 @Preview(showBackground = true)
 @Composable
 fun UnoRandomCardRender() {
-    val (_cardColor, _cardSymbol) = UnoCard.getRandomCard()
-    var cardColor by remember { mutableStateOf(_cardColor) }
-    var cardSymbol by remember { mutableStateOf(_cardSymbol) }
-    val padding : Dp = 30.dp
-    val fontSize : TextUnit = 100.sp
+    val (initialCardColor, initialCardSymbol) = UnoCard.getRandomCard()
+    var cardColor by remember { mutableLongStateOf(initialCardColor) }
+    var cardSymbol by remember { mutableStateOf(initialCardSymbol) }
+    val padding: Dp = 30.dp
+    val fontSize: TextUnit = 100.sp
 
     // Card Oval
     Box {
@@ -87,7 +89,7 @@ fun UnoRandomCardRender() {
         }
 
         // Mid Section
-        Box{
+        Box {
             // Oval
             Column(
                 verticalArrangement = Arrangement.Center,
@@ -120,8 +122,8 @@ fun UnoRandomCardRender() {
                     .fillMaxSize()
                     .background(Color.Transparent)
 
-            ){
-                val largeFont : TextUnit = 200.sp
+            ) {
+                val largeFont: TextUnit = 200.sp
                 Text(
                     text = cardSymbol,
                     color = Color(0xFFFFFFFF),
@@ -130,19 +132,23 @@ fun UnoRandomCardRender() {
                     modifier = Modifier.padding(padding)
                 )
                 Spacer(Modifier.height(10.dp))
-                var fart = "fart"
-                Button(onClick = {
-                    val (newCardColor, newCardSymbol) = UnoCard.getRandomCard()
-                    cardColor = newCardColor
-                    cardSymbol = newCardSymbol
-                },
+                Button(
+                    onClick = {
+                        val (newCardColor, newCardSymbol) = UnoCard.getRandomCard()
+                        cardColor = newCardColor
+                        cardSymbol = newCardSymbol
+                    },
                     colors = ButtonColors(
                         containerColor = Color(0xFFFFFFFF),
                         contentColor = Color(0x00000000),
                         disabledContainerColor = Color(0xEEEEEEEE),
                         disabledContentColor = Color(0x00000000),
-                    )) {
-                    Text(text="Shuffle", color = Color.Black)
+                    ),
+                    modifier = Modifier
+                        .height(50.dp)
+                        .width(100.dp)
+                ) {
+                    Text(text = "Shuffle", color = Color.Black, fontWeight = FontWeight.Bold)
                 }
 
             }
