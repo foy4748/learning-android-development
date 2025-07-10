@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.sharp.Money
+import androidx.compose.material.icons.sharp.Percent
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -86,6 +89,7 @@ fun TipCalculatorRender() {
                 keyboardType = KeyboardType.Number,
                 imeAction = ImeAction.Next
             ),
+            leadingIcon = Icons.Sharp.Money,
             modifier = Modifier
                 .fillMaxWidth()
         )
@@ -102,6 +106,7 @@ fun TipCalculatorRender() {
                 keyboardType = KeyboardType.Number,
                 imeAction = ImeAction.Done
             ),
+            leadingIcon = Icons.Sharp.Percent,
             modifier = Modifier
                 .fillMaxWidth()
         )

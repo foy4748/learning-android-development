@@ -1,10 +1,12 @@
 package com.example.greetingcard.reusables
 
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 
 @Composable
 fun EditTextField(
@@ -14,6 +16,7 @@ fun EditTextField(
     label: String = "",
     singleLine: Boolean = true,
     keyboardOptions: KeyboardOptions,
+    leadingIcon : ImageVector,
 ) {
 
     TextField(
@@ -22,6 +25,7 @@ fun EditTextField(
         singleLine = singleLine,
         label = { Text(text=label) },
         keyboardOptions = keyboardOptions,
-        modifier = modifier
+        modifier = modifier,
+        leadingIcon = { Icon(leadingIcon, contentDescription = "null") }
     )
 }
