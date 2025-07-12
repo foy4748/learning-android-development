@@ -34,5 +34,6 @@ val GalleryData = arrayOf<GalleryPhoto>(
         R.drawable.tower_zhenyu_luo_xpburpkfwus_unsplash,
         "Free to use under the Unsplash License",
         createSpecificDate(2025,4,17),
+        "Airport Boulevard, Changi Airport (SIN), Singapore"
     ),
 )
