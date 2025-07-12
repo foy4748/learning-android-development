@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -100,7 +101,7 @@ fun TipCalculatorRender() {
         EditTextField(
             value = tipPercent,
             onValueChange = { tipPercent = it },
-            label = "Tip Percent %",
+            label = "Tip Percent",
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -119,7 +120,7 @@ fun TipCalculatorRender() {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Round Up the tip ?")
+            Text(text = "Round Up the tip ?", fontSize = 20.sp, fontStyle = FontStyle.Italic)
             Switch(checked = isRoundUp, onCheckedChange = { isRoundUp = !isRoundUp })
 
         }
