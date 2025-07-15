@@ -8,5 +8,6 @@ data class GalleryPhoto(
     @DrawableRes val resourceId: Int,
     val licenseType: String,
     val publishDate: Date,
-    val location: String? = null
+    val location: String? = null,
+    val description: String? = null
 )

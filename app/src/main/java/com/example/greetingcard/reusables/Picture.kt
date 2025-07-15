@@ -1,5 +1,6 @@
 package com.example.greetingcard.reusables
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -8,7 +9,7 @@ import androidx.compose.ui.res.painterResource
 
 @Composable
 fun Picture(
-    id: Int,
+    @DrawableRes id: Int,
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
     contentScale: ContentScale = ContentScale.Crop,

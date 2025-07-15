@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.sharp.ArrowBackIos
 import androidx.compose.material.icons.automirrored.sharp.ArrowForwardIos
@@ -40,7 +42,9 @@ fun ArtGalleryRender() {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxHeight()
+        modifier = Modifier
+            .fillMaxHeight()
+            .verticalScroll(rememberScrollState())
     ) {
         Box {
             Picture(
@@ -58,10 +62,12 @@ fun ArtGalleryRender() {
 
         }
 
-        Column(modifier = Modifier
-            .padding(30.dp)
-            .background(Color(0x4F30D6FF))
-            .padding(20.dp)) {
+        Column(
+            modifier = Modifier
+                .padding(30.dp)
+                .background(Color(0x4F30D6FF))
+                .padding(20.dp)
+        ) {
 
             if (data[currentIndex].location is String) {
                 Text(
