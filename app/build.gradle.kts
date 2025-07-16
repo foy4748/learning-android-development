@@ -60,4 +60,8 @@ dependencies {
     // Material Icon Extended Pack
     //noinspection UseTomlInstead
     implementation("androidx.compose.material:material-icons-extended")
+
+    // Google Fonts
+    //noinspection UseTomlInstead
+    implementation("androidx.compose.ui:ui-text-google-fonts")
 }
