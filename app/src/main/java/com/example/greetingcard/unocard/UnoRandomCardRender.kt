@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -138,17 +140,18 @@ fun UnoRandomCardRender() {
                         cardColor = newCardColor
                         cardSymbol = newCardSymbol
                     },
-                    colors = ButtonColors(
-                        containerColor = Color(0xFFFFFFFF),
-                        contentColor = Color(0x00000000),
-                        disabledContainerColor = Color(0xEEEEEEEE),
-                        disabledContentColor = Color(0x00000000),
-                    ),
+//                    colors = ButtonDefaults.buttonColors(),
+//                    colors = ButtonColors(
+//                        containerColor = MaterialTheme.colorScheme.primaryContainer ,
+//                        contentColor =  MaterialTheme.colorScheme.primary,
+//                        disabledContainerColor = Color(0xEEEEEEEE),
+//                        disabledContentColor = Color(0x00000000),
+//                    ),
                     modifier = Modifier
                         .height(50.dp)
                         .width(100.dp)
                 ) {
-                    Text(text = "Shuffle", color = Color.Black, fontWeight = FontWeight.Bold)
+                    Text(text = "Shuffle", fontWeight = FontWeight.Bold)
                 }
 
             }

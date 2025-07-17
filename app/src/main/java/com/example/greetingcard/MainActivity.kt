@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -26,29 +27,52 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.greetingcard.affirmation.AffirmationRender
-import com.example.greetingcard.ui.theme.GreetingCardTheme
-import com.example.greetingcard.ui.theme.HappyBirthDayTheme
+import com.example.greetingcard.ui.theme.AppTheme
+import com.example.greetingcard.unocard.UnoRandomCardRender
+
+//import com.example.greetingcard.ui.theme.GreetingCardTheme
+//import com.example.greetingcard.ui.theme.HappyBirthDayTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            GreetingCardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Faisal", modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+//            GreetingCardTheme {
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    Greeting(
+//                        name = "Faisal", modifier = Modifier.padding(innerPadding)
+//                    )
+//                }
+//            }
+
+//            val layoutDirection = LocalLayoutDirection.current
+//            HappyBirthDayTheme {
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    Surface(
+//                        color = MaterialTheme.colorScheme.background,
+//                        modifier = Modifier
+//                            .background(color = Color.Red)
+//                            .padding(innerPadding)
+//                            .padding(
+//                                start = WindowInsets.safeDrawing.asPaddingValues()
+//                                    .calculateStartPadding(layoutDirection),
+//                                end = WindowInsets.safeDrawing.asPaddingValues()
+//                                    .calculateEndPadding(layoutDirection),
+//                            ),
+//                    ) {
+//                        BirthdayCardPreview()
+//                    }
+//                }
+//
+//            }
 
             val layoutDirection = LocalLayoutDirection.current
-            HappyBirthDayTheme {
+            AppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Surface(
                         color = MaterialTheme.colorScheme.background,
                         modifier = Modifier
-                            .background(color = Color.Red)
                             .padding(innerPadding)
                             .padding(
                                 start = WindowInsets.safeDrawing.asPaddingValues()
@@ -104,8 +128,12 @@ fun BirthdayCardPreview() {
 //    ArticleTask()
 //    Quadrant()
 //    BusinessCardRender()
-    AffirmationRender()
+//    Button(onClick = {}) {
+//        Text(text="Get Started")
+//    }
+//    AffirmationRender()
 //    ArtGalleryRender()
+    UnoRandomCardRender()
 }
 
 
