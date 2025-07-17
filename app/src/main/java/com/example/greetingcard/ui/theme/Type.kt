@@ -20,9 +20,27 @@ val provider = GoogleFont.Provider(
 )
 
 val bodyFontFamily = FontFamily(
+//    Font(
+//        googleFont = GoogleFont("Montserrat"),
+//        fontProvider = provider,
+//    )
+    // Regular weight
     Font(
         googleFont = GoogleFont("Montserrat"),
         fontProvider = provider,
+        weight = FontWeight.Normal // Default sans-serif style
+    ),
+    // Bold weight
+    Font(
+        googleFont = GoogleFont("Montserrat"),
+        fontProvider = provider,
+        weight = FontWeight.Bold
+    ),
+    // Medium weight (optional)
+    Font(
+        googleFont = GoogleFont("Montserrat"),
+        fontProvider = provider,
+        weight = FontWeight.Medium
     )
 )
 
@@ -87,7 +105,8 @@ val baseline = Typography
 
 val AppTypography = Typography(
     displayLarge = baseline.displayLarge.copy(fontFamily = displayFontFamily),
-    displayMedium = baseline.displayMedium.copy(fontFamily = displayFontFamily),
+//    displayMedium = baseline.displayMedium.copy(fontFamily = displayFontFamily),
+    displayMedium = baseline.displayMedium.copy(fontFamily = bodyFontFamily),
     displaySmall = baseline.displaySmall.copy(fontFamily = displayFontFamily),
     headlineLarge = baseline.headlineLarge.copy(fontFamily = displayFontFamily),
     headlineMedium = baseline.headlineMedium.copy(fontFamily = displayFontFamily),
