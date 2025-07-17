@@ -3,8 +3,11 @@ package com.example.greetingcard.woof
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import com.example.greetingcard.R
 import com.example.greetingcard.topicgrid.Topic
@@ -20,12 +23,15 @@ fun DogItem(
     dog: Topic,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.padding_small))
-    ) {
-        DogIcon(dog.imgId)
-        DogInformation(dog.name, dog.associatedCourses)
+    Card(modifier = modifier) {
+        Row(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.padding_small))
+        ) {
+            DogIcon(dog.imgId)
+            DogInformation(dog.name, dog.associatedCourses)
+        }
+
     }
 }

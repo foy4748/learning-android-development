@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.example.greetingcard.affirmation.AffirmationRender
 import com.example.greetingcard.ui.theme.AppTheme
 import com.example.greetingcard.unocard.UnoRandomCardRender
+import com.example.greetingcard.woof.WoofRender
 
 //import com.example.greetingcard.ui.theme.GreetingCardTheme
 //import com.example.greetingcard.ui.theme.HappyBirthDayTheme
@@ -123,17 +124,18 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
+    AppTheme {
 //    BirthdayCardRender("Faisal", "Wish You all the best")
 //    TaskCheckerTask()
 //    ArticleTask()
 //    Quadrant()
 //    BusinessCardRender()
-//    Button(onClick = {}) {
-//        Text(text="Get Started")
-//    }
 //    AffirmationRender()
 //    ArtGalleryRender()
-    UnoRandomCardRender()
+//    UnoRandomCardRender()
+
+        WoofRender()
+    }
 }
 
 

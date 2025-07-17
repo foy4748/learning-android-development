@@ -370,6 +370,7 @@ fun AppTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = AppTypography,
+        shapes = RoundedShapes,
         content = content
     )
 }
