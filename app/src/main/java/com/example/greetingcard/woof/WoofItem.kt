@@ -1,14 +1,11 @@
 package com.example.greetingcard.woof
 
+import androidx.compose.animation.expandIn
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ExpandMore
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -43,22 +40,16 @@ fun DogItem(
         ) {
             DogIcon(dog.imgId)
             DogInformation(dog.name, dog.associatedCourses)
-            Spacer(modifier= Modifier.weight(1F))
-            Button( onClick = { isOpen = !isOpen}) {
-                Icon(
-                    imageVector = Icons.Filled.ExpandMore,
-                    contentDescription = "Expand Button",
-                )
-
-            }
+            Spacer(modifier = Modifier.weight(1F))
+            WoofExpandCollapseButton(onClick = { isOpen = !isOpen}, expanded = isOpen)
         }
-        if(isOpen)
-        Text(
-            text = "${stringResource(dog.name)} is a Good Dog",
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(start = dimensionResource(R.dimen.padding_small))
-        )
+        if (isOpen)
+            Text(
+                text = "${stringResource(dog.name)} is a Good Dog",
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(start = dimensionResource(R.dimen.padding_small))
+            )
 
     }
 }
