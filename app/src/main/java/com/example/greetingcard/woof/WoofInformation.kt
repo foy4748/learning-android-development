@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.greetingcard.R
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * Composable that displays a dog's name and age.
@@ -18,6 +19,7 @@ import com.example.greetingcard.R
  * @param dogAge is the Int that represents the dog's age
  * @param modifier modifiers to set to this composable
  */
+
 @Composable
 fun DogInformation(
     @StringRes dogName: Int,
