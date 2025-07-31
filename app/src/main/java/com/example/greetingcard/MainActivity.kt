@@ -108,18 +108,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
-    AppTheme {
-//    BirthdayCardRender("Faisal", "Wish You all the best")
-//    TaskCheckerTask()
-//    ArticleTask()
-//    Quadrant()
-//    BusinessCardRender()
-//    AffirmationRender()
-//    ArtGalleryRender()
-//    UnoRandomCardRender()
-
-        WoofRender()
-    }
+    MainLayout()
 }
 
 
