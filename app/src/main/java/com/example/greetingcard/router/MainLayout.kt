@@ -85,42 +85,53 @@ fun MainLayout(navController: NavHostController = rememberNavController()) {
             drawerState = drawerState,
             drawerContent = {
                 ModalDrawerSheet {
-                    Column (
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                    Column(
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
                             .verticalScroll(rememberScrollState())
                     ) {
                         Spacer(Modifier.height(12.dp))
-                        Text("Drawer Title", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
+                        Text(
+                            "Greeting Card App",
+                            modifier = Modifier.padding(16.dp),
+                            style = MaterialTheme.typography.titleLarge
+                        )
                         HorizontalDivider()
 
-                        Text("Section 1", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
-                        NavigationDrawerItem(
-                            label = { Text("Item 1") },
-                            selected = false,
-                            onClick = { /* Handle click */ }
+                        Text(
+                            "Section 1",
+                            modifier = Modifier.padding(16.dp),
+                            style = MaterialTheme.typography.titleMedium
                         )
                         NavigationDrawerItem(
-                            label = { Text("Item 2") },
+                            label = { Text("Affirmation") },
                             selected = false,
-                            onClick = { /* Handle click */ }
+                            onClick = {
+                                navController.navigate(GreetingCardScreen.Start.name)
+
+                                scope.launch {
+                                    drawerState.apply {
+                                        if (isClosed) open() else close()
+                                    }
+                                }
+                            }
+                        )
+                        NavigationDrawerItem(
+                            label = { Text("ArtGallery") },
+                            selected = false,
+                            onClick = {
+                                navController.navigate(GreetingCardScreen.ArtGallery.name)
+
+                                scope.launch {
+                                    drawerState.apply {
+                                        if (isClosed) open() else close()
+                                    }
+                                }
+                            }
                         )
 
                         HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
-                        Text("Section 2", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
-                        NavigationDrawerItem(
-                            label = { Text("Settings") },
-                            selected = false,
-                            icon = { Icon(Icons.Outlined.Settings, contentDescription = null) },
-                            badge = { Text("20") }, // Placeholder
-                            onClick = { /* Handle click */ }
-                        )
-                        NavigationDrawerItem(
-                            label = { Text("Help and feedback") },
-                            selected = false,
-                            icon = { Icon(Icons.AutoMirrored.Outlined.Help, contentDescription = null) },
-                            onClick = { /* Handle click */ },
-                        )
                         Spacer(Modifier.height(12.dp))
                     }
                 }
