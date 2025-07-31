@@ -1,6 +1,5 @@
 package com.example.greetingcard.router
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,15 +14,13 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.Help
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.sharp.Menu
-import androidx.compose.material3.Button
+import androidx.compose.material.icons.filled.ArrowBackIosNew
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -31,19 +28,20 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.greetingcard.BirthdayCardPreview
 import com.example.greetingcard.affirmation.AffirmationRender
 import com.example.greetingcard.artgallery.ArtGalleryRender
 import com.example.greetingcard.article.ArticleTask
@@ -74,6 +72,7 @@ enum class GreetingCardScreen() {
 }
 
 
+@ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun MainLayout(navController: NavHostController = rememberNavController()) {
@@ -81,6 +80,20 @@ fun MainLayout(navController: NavHostController = rememberNavController()) {
     AppTheme {
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
         val scope = rememberCoroutineScope()
+
+        val backStackEntry by navController.currentBackStackEntryAsState()
+        val currentScreen = GreetingCardScreen.valueOf(
+            backStackEntry?.destination?.route ?: GreetingCardScreen.Start.name
+        )
+
+        fun showOrHideMenu() {
+            scope.launch {
+                drawerState.apply {
+                    if (isClosed) open() else close()
+                }
+            }
+        }
+
         ModalNavigationDrawer(
             drawerState = drawerState,
             drawerContent = {
@@ -99,36 +112,21 @@ fun MainLayout(navController: NavHostController = rememberNavController()) {
                         HorizontalDivider()
 
                         Text(
-                            "Section 1",
+                            "Navigate to",
                             modifier = Modifier.padding(16.dp),
                             style = MaterialTheme.typography.titleMedium
                         )
-                        NavigationDrawerItem(
-                            label = { Text("Affirmation") },
-                            selected = false,
-                            onClick = {
-                                navController.navigate(GreetingCardScreen.Start.name)
-
-                                scope.launch {
-                                    drawerState.apply {
-                                        if (isClosed) open() else close()
-                                    }
+                        for (item in GreetingCardScreen.entries) {
+                            NavigationDrawerItem(
+                                label = { Text(item.name) },
+                                selected = false,
+                                onClick = {
+                                    navController.navigate(item.name)
+                                    showOrHideMenu()
                                 }
-                            }
-                        )
-                        NavigationDrawerItem(
-                            label = { Text("ArtGallery") },
-                            selected = false,
-                            onClick = {
-                                navController.navigate(GreetingCardScreen.ArtGallery.name)
+                            )
 
-                                scope.launch {
-                                    drawerState.apply {
-                                        if (isClosed) open() else close()
-                                    }
-                                }
-                            }
-                        )
+                        }
 
                         HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
@@ -139,26 +137,37 @@ fun MainLayout(navController: NavHostController = rememberNavController()) {
         ) {
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
-
-                floatingActionButton = {
-                    ExtendedFloatingActionButton(
-                        text = { Text("Show drawer") },
-                        icon = {
-                            Icon(
-                                Icons.Sharp.Menu,
-                                contentDescription = "Open / Close Drawer"
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(
+                                text = currentScreen.name
                             )
                         },
-                        onClick = {
-                            scope.launch {
-                                drawerState.apply {
-                                    if (isClosed) open() else close()
+                        navigationIcon = {
+                            Row {
+                                if (navController.previousBackStackEntry != null) {
+                                    IconButton(onClick = { navController.navigateUp() }) {
+                                        Icon(
+                                            imageVector = Icons.Filled.ArrowBackIosNew,
+                                            contentDescription = "Navigate Back Button"
+                                        )
+                                    }
+                                }
+                                IconButton(onClick = {
+                                    showOrHideMenu()
+                                }) {
+                                    Icon(
+                                        imageVector = Icons.Filled.Menu,
+                                        contentDescription = "Navigate Back Button"
+                                    )
                                 }
                             }
-                        }
+                        },
                     )
-                }
-            ) { innerPadding ->
+                },
+
+                ) { innerPadding ->
                 Surface(
                     color = MaterialTheme.colorScheme.background,
                     modifier = Modifier
@@ -178,7 +187,6 @@ fun MainLayout(navController: NavHostController = rememberNavController()) {
                         composable(GreetingCardScreen.Start.name) {
                             AffirmationRender()
                         }
-
                         composable(GreetingCardScreen.ArtGallery.name) {
                             ArtGalleryRender()
                         }
@@ -220,3 +228,22 @@ fun MainLayout(navController: NavHostController = rememberNavController()) {
     }
 
 }
+
+
+/*
+
+                floatingActionButton = {
+                    ExtendedFloatingActionButton(
+                        text = { Text("Show drawer") },
+                        icon = {
+                            Icon(
+                                Icons.Sharp.Menu,
+                                contentDescription = "Open / Close Drawer"
+                            )
+                        },
+                        onClick = {
+                            showOrHideMenu()
+                        }
+                    )
+                },
+ */
