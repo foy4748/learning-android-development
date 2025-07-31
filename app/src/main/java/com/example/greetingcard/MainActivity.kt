@@ -27,6 +27,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.greetingcard.affirmation.AffirmationRender
+import com.example.greetingcard.router.MainLayout
 import com.example.greetingcard.ui.theme.AppTheme
 import com.example.greetingcard.unocard.UnoRandomCardRender
 import com.example.greetingcard.woof.WoofRender
@@ -39,6 +40,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            MainLayout()
+
 //            GreetingCardTheme {
 //                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    Greeting(
@@ -68,25 +71,6 @@ class MainActivity : ComponentActivity() {
 //
 //            }
 
-            val layoutDirection = LocalLayoutDirection.current
-            AppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Surface(
-                        color = MaterialTheme.colorScheme.background,
-                        modifier = Modifier
-                            .padding(innerPadding)
-                            .padding(
-                                start = WindowInsets.safeDrawing.asPaddingValues()
-                                    .calculateStartPadding(layoutDirection),
-                                end = WindowInsets.safeDrawing.asPaddingValues()
-                                    .calculateEndPadding(layoutDirection),
-                            ),
-                    ) {
-                        BirthdayCardPreview()
-                    }
-                }
-
-            }
         }
     }
 }
