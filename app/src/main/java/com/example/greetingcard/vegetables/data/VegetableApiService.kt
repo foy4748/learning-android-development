@@ -7,15 +7,18 @@ import retrofit2.http.GET
 private const val BASE_URL =
     "https://phitron-sdt-assignment-05.vercel.app"
 
-class VegetableApiService {
+val retrofit = Retrofit.Builder()
+    .addConverterFactory(ScalarsConverterFactory.create())
+    .baseUrl(BASE_URL)
+    .build()
 
-    val retrofit = Retrofit.Builder()
-        .addConverterFactory(ScalarsConverterFactory.create())
-        .baseUrl(BASE_URL)
-        .build()
-}
 
-interface IVegetableApiService {
+interface VegetableApiService {
     @GET("product-list")
-    fun getPhotos(): String
+    suspend fun getVegetables(): String
+}
+object VegetableApi {
+    val retrofitService : VegetableApiService by lazy {
+        retrofit.create(VegetableApiService::class.java)
+    }
 }
